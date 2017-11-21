@@ -7,6 +7,7 @@ import { authSelectors } from '../../../modules/auth/redux/index';
 import './DefaultLayout.css';
 import { config } from '../../config/config';
 import { Header } from '../_header/Header';
+import { Nav } from '../Nav';
 
 interface DefaultLayoutProps {
     isAuthenticated: boolean;
@@ -49,6 +50,7 @@ class DefaultLayoutClass extends React.Component<DefaultLayoutProps, any> {
                 <div className={classnames(`${B}-mainbox`)}>
                     {segments.main}
                 </div>
+                <Nav isAuthenticated={this.props.isAuthenticated} />
             </div>
         );
     }

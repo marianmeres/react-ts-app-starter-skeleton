@@ -12,21 +12,18 @@ import { DefaultLayout } from '../_layout/DefaultLayout';
 import { LayoutSegment } from '../_layout/LayoutSegment';
 import { RootState } from '../../reducer';
 import { authActions, authSelectors } from '../../../modules/auth/redux/index';
-import { Header } from '../_header/Header';
-import './HomePage.css';
-import { Nav } from '../Nav';
 
-interface HomePageProps {
+interface FooPageProps {
     isAuthenticated?: boolean;
     identity?: IdentityData;
     dispatch?: (action) => void;
 }
 
-interface HomePageState {
+interface FooPageState {
     redirectTo?: string | null;
 }
 
-class HomePageContainer extends React.Component<HomePageProps, HomePageState> {
+class FooPageContainer extends React.Component<FooPageProps, FooPageState> {
 
     state = {
         redirectTo: null,
@@ -43,7 +40,6 @@ class HomePageContainer extends React.Component<HomePageProps, HomePageState> {
     render() {
 
         let B = config.css.B('-homepage');
-        let { identity, isAuthenticated } = this.props;
         // console.log(this.props.identity, this.props.isAuthenticated);
 
         if (this.state.redirectTo) {
@@ -53,13 +49,9 @@ class HomePageContainer extends React.Component<HomePageProps, HomePageState> {
         return (
             <DefaultLayout>
 
-                <LayoutSegment label="header">
-                    <Header title={`Home title`} />
-                </LayoutSegment>
-
                 <LayoutSegment label="main">
                     <div className={classnames(B)}>
-                        HomePage
+                        FooPage
                     </div>
                 </LayoutSegment>
 
@@ -68,15 +60,15 @@ class HomePageContainer extends React.Component<HomePageProps, HomePageState> {
     }
 }
 
-const mapStateToProps = (state: RootState, ownProps = {}): HomePageProps => ({
+const mapStateToProps = (state: RootState, ownProps = {}): FooPageProps => ({
     isAuthenticated: authSelectors.identity.isAuthenticated(state),
     identity: identitySelectors.getIdentity(state),
 });
 
-const mapDispatchToProps = (dispatch, ownProps = {}): HomePageProps => ({
+const mapDispatchToProps = (dispatch, ownProps = {}): FooPageProps => ({
     dispatch,
 });
 
-export const HomePage = withRouter(
-    connect(mapStateToProps, mapDispatchToProps)(HomePageContainer)
+export const FooPage = withRouter(
+    connect(mapStateToProps, mapDispatchToProps)(FooPageContainer)
 );

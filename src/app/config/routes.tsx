@@ -1,10 +1,12 @@
 import * as React from 'react';
 import { IS_PRODUCTION } from './config';
 import { HomePage } from '../components/page-home/HomePage';
+import { FooPage } from '../components/page-foo/FooPage';
 
-export const ROUTER_BASENAME = IS_PRODUCTION ? '/guest' : '/';
+export const ROUTER_BASENAME = IS_PRODUCTION ? '/' : '/'; // dummy
 
 export const ROUTE_HOME = '/';
+export const ROUTE_FOO = '/foo';
 export const ROUTE_LOGIN = '/login';
 export const ROUTE_LOGOUT = '/logout';
 
@@ -34,5 +36,10 @@ export const routes: RouteDescription[] = [
         path: ROUTE_HOME,
         exact: true,
         component: HomePage,
+    }, {
+        label: 'Foo',
+        path: ROUTE_FOO,
+        exact: true,
+        component: FooPage,
     },
 ];

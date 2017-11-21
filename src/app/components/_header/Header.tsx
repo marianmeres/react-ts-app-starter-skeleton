@@ -24,29 +24,22 @@ class HeaderClass extends React.Component<HeaderProps, HeaderState> {
 
     // pouzije sa pri `undefined`, nie `null`
     static defaultProps: HeaderProps = {
-        title: 'Foo',
+        title: 'Untitled',
     };
 
     render() {
         let B = config.css.B('-header');
         let { identity, title, backUrl } = this.props;
 
-        // quick-n-dirty
-        // let title = 'Welcome in Super Hotel!';
-        // if (identity && identity.user_id) {
-        //     title = `Room #${identity.user_id}`;
-        // }
-
         return (
             <header className={classnames(B)}>
-                header
-                {/*<div className="_icon-placeholder _left"><span>*/}
-                    {/*{backUrl && <Link to={backUrl}>&#9668;</Link>}*/}
-                {/*</span></div>*/}
-                {/*<h1>{title}</h1>*/}
-                {/*<div className="_icon-placeholder _right" title="Connection status">*/}
-
-                {/*</div>*/}
+                <div className="_icon-placeholder _left"><span>
+                    {backUrl && <Link to={backUrl}>&#9668;</Link>}
+                </span></div>
+                <h1>{title}</h1>
+                <div className="_icon-placeholder _right" title="Connection status">
+                    &nbsp;
+                </div>
             </header>
         );
     }
