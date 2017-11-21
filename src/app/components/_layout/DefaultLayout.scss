@@ -1,0 +1,29 @@
+@import "../../../_sass/shared-core";
+
+$headerboxHeight: 60px;
+
+.#{$bemNs}-layout {
+  overflow: hidden;
+  @include flexcolumn-container-left-top();
+  max-width: 1024px;
+  margin: 0 auto;
+  background: white;
+  height: 100%;
+
+  &-headerbox {
+    width: 100%;
+    //border-bottom: 1px solid silver;
+    //height: $headerboxHeight;
+  }
+
+  &-mainbox {
+    width: 100%;
+    flex: 1;
+    overflow: hidden;
+
+    background-color: #f5f7fa;
+
+    // toto davam kvoli safari...
+    @include flexcolumn-container-left-top();
+  }
+}

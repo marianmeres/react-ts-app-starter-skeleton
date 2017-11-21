@@ -1,0 +1,47 @@
+@import "_sass/shared-core";
+
+// ultra core (reboot + type...)
+@import "../node_modules/bootstrap/scss/reboot";
+@import "../node_modules/bootstrap/scss/type";
+@import "../node_modules/bootstrap/scss/utilities/clearfix";
+@import "../node_modules/bootstrap/scss/utilities/screenreaders";
+
+// extended core (+ button + forms)
+@import "../node_modules/bootstrap/scss/buttons";
+@import "../node_modules/bootstrap/scss/forms";
+@import "../node_modules/bootstrap/scss/custom-forms";
+//@import "../node_modules/bootstrap/scss/utilities";
+
+// misc global
+button {
+  cursor: pointer;
+  &[disabled] {
+    cursor: not-allowed;
+  }
+}
+
+// core layout
+html {
+  height: 100vh;
+  width: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+// react root element
+#root {
+  height: 100%;
+
+  //> div { height: 100%; }
+
+  background-color: #eee;
+}
+
+.#{$bemNs}-top-container {
+  height: 100%;
+}

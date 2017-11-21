@@ -1,0 +1,23 @@
+.foo-layout {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  max-width: 1024px;
+  margin: 0 auto;
+  background: white;
+  height: 100%; }
+  .foo-layout-headerbox {
+    width: 100%; }
+  .foo-layout-mainbox {
+    width: 100%;
+    flex: 1;
+    overflow: hidden;
+    background-color: #f5f7fa;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: flex-start; }
