@@ -12,11 +12,13 @@ import { DefaultLayout } from '../_layout/DefaultLayout';
 import { LayoutSegment } from '../_layout/LayoutSegment';
 import { RootState } from '../../reducer';
 import { authActions, authSelectors } from '../../../modules/auth/redux/index';
+import { RouteProps } from '../../types';
 
-interface FooPageProps {
+interface FooPageProps extends RouteProps {
     isAuthenticated?: boolean;
     identity?: IdentityData;
     dispatch?: (action) => void;
+
 }
 
 interface FooPageState {
@@ -51,7 +53,7 @@ class FooPageContainer extends React.Component<FooPageProps, FooPageState> {
 
                 <LayoutSegment label="main">
                     <div className={classnames(B)}>
-                        FooPage
+                        Page {this.props.location.pathname}
                     </div>
                 </LayoutSegment>
 
@@ -70,5 +72,5 @@ const mapDispatchToProps = (dispatch, ownProps = {}): FooPageProps => ({
 });
 
 export const FooPage = withRouter(
-    connect(mapStateToProps, mapDispatchToProps)(FooPageContainer)
+    connect<any, any, FooPageProps>(mapStateToProps, mapDispatchToProps)(FooPageContainer)
 );

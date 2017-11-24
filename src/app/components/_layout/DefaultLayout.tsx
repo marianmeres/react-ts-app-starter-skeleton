@@ -7,12 +7,16 @@ import { authSelectors } from '../../../modules/auth/redux/index';
 import './DefaultLayout.css';
 import { config } from '../../config/config';
 import { Header } from '../_header/Header';
-import { Nav } from '../Nav';
+import { Nav } from '../_nav/Nav';
+import { RouteProps } from '../../types';
 
-interface DefaultLayoutProps {
-    isAuthenticated: boolean;
-    mainComponent: any;
+interface DefaultLayoutProps extends RouteProps {
+    isAuthenticated?: boolean;
+    mainComponent?: any;
     className?: string;
+}
+
+interface DefaultLayoutState {
 }
 
 interface DefaultLayoutSegments {
@@ -20,7 +24,7 @@ interface DefaultLayoutSegments {
     main: any;
 }
 
-class DefaultLayoutClass extends React.Component<DefaultLayoutProps, any> {
+class DefaultLayoutClass extends React.Component<DefaultLayoutProps, DefaultLayoutState> {
 
     _segments(): DefaultLayoutSegments {
         let map = {} as any;
@@ -43,25 +47,29 @@ class DefaultLayoutClass extends React.Component<DefaultLayoutProps, any> {
         let segments = this._segments();
 
         return (
-            <div className={classnames(B)}>
+            <section className={classnames(B)}>
                 <div className={classnames(`${B}-headerbox`)}>
                     {segments.header || <Header />}
                 </div>
                 <div className={classnames(`${B}-mainbox`)}>
                     {segments.main}
                 </div>
-                <Nav isAuthenticated={this.props.isAuthenticated} />
-            </div>
+                <Nav isAuthenticated={this.props.isAuthenticated} currentPath={this.props.location.pathname}/>
+            </section>
         );
     }
 }
 
-function mapStateToProps(state: RootState, ownProps = {}): any {
+function mapStateToProps(state: RootState, ownProps = {}): DefaultLayoutProps {
     return {
         isAuthenticated: authSelectors.identity.isAuthenticated(state),
     };
 }
 
+const mapDispatchToProps = (dispatch, ownProps = {}): DefaultLayoutProps => ({
+
+});
+
 export const DefaultLayout = withRouter(
-    connect(mapStateToProps)(DefaultLayoutClass)
+    connect<any, any, DefaultLayoutProps>(mapStateToProps, mapDispatchToProps)(DefaultLayoutClass)
 );

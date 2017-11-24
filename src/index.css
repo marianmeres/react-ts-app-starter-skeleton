@@ -1241,8 +1241,7 @@ body {
   width: 100%; }
 
 #root {
-  height: 100%;
-  background-color: #eee; }
+  height: 100%; }
 
-.foo-top-container {
+.app-top-container {
   height: 100%; }

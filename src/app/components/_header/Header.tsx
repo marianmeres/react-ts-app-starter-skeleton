@@ -8,8 +8,9 @@ import { config } from '../../config/config';
 import { RootState } from '../../reducer';
 import { identitySelectors } from '../../../modules/auth/redux/identity';
 import './Header.css';
+import { RouteProps } from '../../types';
 
-interface HeaderProps {
+interface HeaderProps extends RouteProps {
     title?: string;
     window?: WindowState;
     identity?: IdentityData;
@@ -24,19 +25,19 @@ class HeaderClass extends React.Component<HeaderProps, HeaderState> {
 
     // pouzije sa pri `undefined`, nie `null`
     static defaultProps: HeaderProps = {
-        title: 'Untitled',
+        // title: 'Untitled',
     };
 
     render() {
         let B = config.css.B('-header');
-        let { identity, title, backUrl } = this.props;
+        let { identity, title, backUrl, location } = this.props;
 
         return (
             <header className={classnames(B)}>
                 <div className="_icon-placeholder _left"><span>
                     {backUrl && <Link to={backUrl}>&#9668;</Link>}
                 </span></div>
-                <h1>{title}</h1>
+                <h1>{title || location.pathname}</h1>
                 <div className="_icon-placeholder _right" title="Connection status">
                     &nbsp;
                 </div>

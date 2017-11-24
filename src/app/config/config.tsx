@@ -23,11 +23,11 @@ export interface EnvironmentConfig {
 
 // production chapeme ako default
 const production: EnvironmentConfig = {
-    appCode: 'foo',
+    appCode: 'app',
 
     css: {
         // "B" from "BEM"
-        B: (name) => `foo${name}`,
+        B: (name) => `app${name}`,
     },
 
 };

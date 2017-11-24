@@ -1,4 +1,4 @@
-.foo-homepage {
+.app-homepage {
   flex: 1;
   width: 100%;
   display: flex;
@@ -6,23 +6,23 @@
   flex-wrap: nowrap;
   justify-content: center;
   align-items: center; }
-  .foo-homepage h2 {
+  .app-homepage h2 {
     font-size: 1.3em;
     margin-bottom: 1em; }
-  .foo-homepage p {
+  .app-homepage p {
     color: gray; }
-  .foo-homepage-buttonswrap {
+  .app-homepage-buttonswrap {
     width: 100%;
     max-width: 300px;
     padding: 15px;
     text-align: center; }
-  .foo-homepage-buttons {
+  .app-homepage-buttons {
     text-align: center;
     width: 100%; }
-  .foo-homepage-roombutton {
+  .app-homepage-roombutton {
     width: 5em;
     margin-bottom: .5em; }
-    .foo-homepage-roombutton.btn {
+    .app-homepage-roombutton.btn {
       display: block;
       margin-left: auto;
       margin-right: auto;

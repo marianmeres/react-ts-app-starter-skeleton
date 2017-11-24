@@ -14,7 +14,6 @@ import { RootState } from '../../reducer';
 import { authActions, authSelectors } from '../../../modules/auth/redux/index';
 import { Header } from '../_header/Header';
 import './HomePage.css';
-import { Nav } from '../Nav';
 
 interface HomePageProps {
     isAuthenticated?: boolean;
@@ -78,5 +77,5 @@ const mapDispatchToProps = (dispatch, ownProps = {}): HomePageProps => ({
 });
 
 export const HomePage = withRouter(
-    connect(mapStateToProps, mapDispatchToProps)(HomePageContainer)
+    connect<any, any, HomePageProps>(mapStateToProps, mapDispatchToProps)(HomePageContainer)
 );

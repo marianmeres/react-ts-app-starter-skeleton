@@ -1,17 +1,16 @@
-.foo-layout {
-  overflow: hidden;
+.app-layout {
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
   justify-content: flex-start;
   align-items: flex-start;
-  max-width: 1024px;
-  margin: 0 auto;
-  background: white;
-  height: 100%; }
-  .foo-layout-headerbox {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden; }
+  .app-layout-headerbox {
     width: 100%; }
-  .foo-layout-mainbox {
+  .app-layout-mainbox {
     width: 100%;
     flex: 1;
     overflow: hidden;

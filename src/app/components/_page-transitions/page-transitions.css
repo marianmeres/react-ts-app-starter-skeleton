@@ -1,0 +1,52 @@
+/*
+The animation classNames applied to the component as it enters or exits.
+A single name can be provided and it will be suffixed for each stage: e.g.
+
+classNames="fade" applies:
+  fade-enter, "transition has begun"
+  fade-enter-active, "transition is finished - state is active"
+  fade-exit,
+  fade-exit-active,
+  fade-appear,
+  and fade-appear-active.
+
+ */
+.page-transition {
+  transition-duration: .25s;
+  transform: translate3d(0, 0, 0); }
+
+.page-transition-push-enter {
+  transform: translate3d(100%, 0, 0); }
+  .page-transition-push-enter-active {
+    transform: translate3d(0, 0, 0); }
+
+.page-transition-push-exit {
+  transform: translate3d(0, 0, 0); }
+  .page-transition-push-exit-active {
+    transform: translate3d(-100%, 0, 0); }
+
+.page-transition-pop-enter {
+  transform: translate3d(-100%, 0, 0); }
+  .page-transition-pop-enter-active {
+    transform: translate3d(0, 0, 0); }
+
+.page-transition-pop-exit {
+  transform: translate3d(0, 0, 0); }
+  .page-transition-pop-exit-active {
+    transform: translate3d(100%, 0, 0); }
+
+.page-transition-fade-appear,
+.page-transition-fade-enter {
+  opacity: 0; }
+
+.page-transition-fade-appear-active,
+.page-transition-fade-enter-active {
+  transition: opacity .3s linear;
+  opacity: 1; }
+
+.page-transition-fade-exit {
+  transition: opacity .3s linear;
+  opacity: 1; }
+
+.page-transition-fade-exit-active {
+  opacity: 0; }

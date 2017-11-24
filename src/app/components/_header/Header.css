@@ -1,4 +1,4 @@
-.foo-header {
+.app-header {
   width: 100%;
   min-height: 50px;
   display: flex;
@@ -7,14 +7,14 @@
   justify-content: center;
   align-items: center;
   border-bottom: 1px solid #e6e9ed; }
-  .foo-header h1 {
+  .app-header h1 {
     flex: 1;
     font-size: inherit;
     font-weight: bold;
     margin: 0;
     padding: 0;
     text-align: center; }
-  .foo-header ._icon-placeholder {
+  .app-header ._icon-placeholder {
     width: 50px;
     height: 50px;
     display: flex;
@@ -22,7 +22,7 @@
     flex-wrap: nowrap;
     justify-content: center;
     align-items: center; }
-    .foo-header ._icon-placeholder a {
+    .app-header ._icon-placeholder a {
       width: 50px;
       height: 50px;
       display: flex;
@@ -30,14 +30,14 @@
       flex-wrap: nowrap;
       justify-content: center;
       align-items: center; }
-      .foo-header ._icon-placeholder a:hover {
+      .app-header ._icon-placeholder a:hover {
         text-decoration: none; }
-  .foo-header ._right span {
+  .app-header ._right span {
     font-size: 1px;
     width: 10px;
     height: 10px;
     border-radius: 50%; }
-    .foo-header ._right span._is-connected {
+    .app-header ._right span._is-connected {
       background: lightgreen; }
-    .foo-header ._right span._is-not-connected {
+    .app-header ._right span._is-not-connected {
       background: lightcoral; }

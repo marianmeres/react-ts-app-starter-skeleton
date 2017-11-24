@@ -1,6 +1,6 @@
 
-import _isArray = require('lodash/isArray');
-import _find = require('lodash/find');
+import * as _isArray from 'lodash/isArray';
+import * as _find from 'lodash/find';
 
 export default class BaseCollection {
 

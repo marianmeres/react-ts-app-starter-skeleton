@@ -3,12 +3,17 @@
 $headerboxHeight: 60px;
 
 .#{$bemNs}-layout {
-  overflow: hidden;
+  //overflow: hidden;
   @include flexcolumn-container-left-top();
-  max-width: 1024px;
-  margin: 0 auto;
-  background: white;
+  //max-width: 1024px;
+  //margin: 0 auto;
+  //background: white;
+  //height: 100%;
+
+  position: absolute;
+  width: 100%;
   height: 100%;
+  overflow: hidden;
 
   &-headerbox {
     width: 100%;

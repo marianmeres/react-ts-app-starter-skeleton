@@ -25,5 +25,6 @@ export interface RouteProps {
         goBack: () => any; // Equivalent to go(-1)
         goForward: () => any; // Equivalent to go(1)
         block: (prompt) => any; // Prevents navigation
+        listen?: any;
     };
 }

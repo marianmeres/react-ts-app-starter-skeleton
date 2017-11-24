@@ -7,10 +7,12 @@ export const ROUTER_BASENAME = IS_PRODUCTION ? '/' : '/'; // dummy
 
 export const ROUTE_HOME = '/';
 export const ROUTE_FOO = '/foo';
+export const ROUTE_FOO_BAR = '/foo/bar';
 export const ROUTE_LOGIN = '/login';
 export const ROUTE_LOGOUT = '/logout';
 
 export interface RouteDescription {
+    customRoute?: any;
     path: string;
     exact?: boolean;
     component: any;
@@ -39,6 +41,12 @@ export const routes: RouteDescription[] = [
     }, {
         label: 'Foo',
         path: ROUTE_FOO,
+        exact: true,
+        component: FooPage,
+    },
+    {
+        label: 'Bar',
+        path: ROUTE_FOO_BAR,
         exact: true,
         component: FooPage,
     },
