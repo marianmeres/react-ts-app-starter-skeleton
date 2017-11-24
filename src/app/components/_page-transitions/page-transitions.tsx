@@ -1,10 +1,15 @@
 import * as React from 'react';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
-import { withRouter } from 'react-router-dom';
-import * as _startsWith from 'lodash/startsWith';
 import { config } from '../../config/config';
 import './page-transitions.css';
-import { BrowserLocationObj } from '../../types';
+import {
+    goesDeeper, goesElse, goesHigher, goesSame, goesToSibling
+} from './utils';
+
+const TRANS_RIGHT_2_LEFT = 'r2l';
+const TRANS_LEFT_2_RIGHT = 'l2r';
+const TRANS_FADE = 'fade';
+const TRANS_NONE = 'none';
 
 /**
  * inspiration:
@@ -20,15 +25,17 @@ import { BrowserLocationObj } from '../../types';
  */
 const PageTransition = (props) => {
     let { method } = props;
-    if (['push', 'pop'].indexOf(method) === -1) { method = 'none'; }
-    let timeout = method === 'none' ? 0 : 250;
+    if ([TRANS_RIGHT_2_LEFT, TRANS_LEFT_2_RIGHT, TRANS_FADE].indexOf(method) === -1) {
+        method = TRANS_NONE;
+    }
+    let timeout = _getTransitionDuration(method);
 
     // tu potencialne special case-y pre jednotlive metody
 
     return (
         <CSSTransition
             {...props}
-            classNames={`page-transition page-transition-${method}`}
+            classNames={`page-transition page-transition-${method} page-transition-${method}`}
             timeout={timeout}
             mountOnEnter={true}
             unmountOnExit={true}
@@ -47,9 +54,9 @@ export const renderWithTransition = (component, props) => {
     let method = _getTransitionMethod(props);
 
     // NOTES:
-    // a) transition key IS important... `location.pathname` is better than `location.key`
-    // b) AND, UFF, `childFactory` (to be able to change method at runtime)
-    //    IS ABSOLUTELY CRITICAL to make it work the way we need to...
+    // a) transition key IS important... (`location.pathname` is better than `location.key`)
+    // b) AND, UFF, `childFactory` IS ABSOLUTELY CRITICAL (to be able to change
+    //    method at runtime) to make it work the way we need to...
     return (
         <TransitionGroup
             className={config.css.B('-top-container')}
@@ -76,18 +83,39 @@ export const renderWithTransition = (component, props) => {
 const _getTransitionMethod = ({ location, previousLocation }): string => {
     const from = previousLocation.pathname;
     const to = location.pathname;
+    // console.warn(`${from} => ${to}`);
 
-    // quick-n-dirty here only
-    let method = 'push';
-    if (from === '/foo/bar') {
-        method = 'pop';
+    switch (true) {
+        case goesDeeper(from, to):
+            return TRANS_RIGHT_2_LEFT;
+        case goesHigher(from, to):
+            return TRANS_LEFT_2_RIGHT;
+        case goesToSibling(from, to):
+            return TRANS_FADE;
+        case goesSame(from, to):
+        case goesElse(from, to):
+        default:
+            return TRANS_NONE;
     }
-    // if (to === '/') {
-    //     method = 'none';
-    // }
-
-    return method;
 };
+
+/**
+ * @param method
+ * @returns {number}
+ * @private
+ */
+const _getTransitionDuration = (method) => {
+    switch (method) {
+        case TRANS_FADE:
+            return 500;
+        case TRANS_NONE:
+            return 0;
+        default:
+            return 250;
+    }
+};
+
+
 
 // const PageTransitionNone = (props) => (
 //     <CSSTransition

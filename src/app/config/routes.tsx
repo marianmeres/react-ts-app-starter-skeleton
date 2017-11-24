@@ -6,8 +6,6 @@ import { FooPage } from '../components/page-foo/FooPage';
 export const ROUTER_BASENAME = IS_PRODUCTION ? '/' : '/'; // dummy
 
 export const ROUTE_HOME = '/';
-export const ROUTE_FOO = '/foo';
-export const ROUTE_FOO_BAR = '/foo/bar';
 export const ROUTE_LOGIN = '/login';
 export const ROUTE_LOGOUT = '/logout';
 
@@ -40,13 +38,25 @@ export const routes: RouteDescription[] = [
         component: HomePage,
     }, {
         label: 'Foo',
-        path: ROUTE_FOO,
+        path: '/foo',
         exact: true,
         component: FooPage,
     },
     {
         label: 'Bar',
-        path: ROUTE_FOO_BAR,
+        path: '/foo/bar',
+        exact: true,
+        component: FooPage,
+    },
+    {
+        label: 'Baz',
+        path: '/foo/bar/baz',
+        exact: true,
+        component: FooPage,
+    },
+    {
+        label: 'Bat',
+        path: '/bat',
         exact: true,
         component: FooPage,
     },
